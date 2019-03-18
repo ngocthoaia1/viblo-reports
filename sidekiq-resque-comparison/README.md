@@ -1,24 +1,23 @@
-# README
+### resque
+#### start worker
+```
+QUEUE=* rake resque:work
+```
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##### call worker
+```
+20.times{Resque.enqueue ResqueHardWorker, nil}
+```
 
-Things you may want to cover:
 
-* Ruby version
+### sidekiq
 
-* System dependencies
+#### start worker
+```
+bundle exec sidekiq
+```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+#### test worker
+```
+20.times{SidekiqHardWorker.perform_async}
+```
